@@ -4,8 +4,6 @@ import 'package:api/List_of_match.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-//change
-
 class show_data extends StatefulWidget {
   const show_data({super.key});
 
@@ -50,7 +48,7 @@ class _show_dataState extends State<show_data> {
                       child: Center(
                           child: Text(
                         "${My_app_data!.typeMatches![index].matchType}",
-                        style: TextStyle(fontSize: 20, color: Colors.black),
+                        style: TextStyle(fontSize: 20, color: Colors.black,fontWeight: FontWeight.bold),
                       )),
                       height: 140,
                       decoration: BoxDecoration(

@@ -30,42 +30,45 @@ class _ListOfMatchState extends State<ListOfMatch> {
             ? ListView.builder(
                 itemCount: widget.seriesMatches!.length,
                 itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(40.0),
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetailsOfMatch(),
-                              ));
-                        });
-                      },
-                      child: Container(
-                        child: Center(
-                            child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "${widget.seriesMatches![index].seriesAdWrapper!.seriesName}",
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.black),
-                              ),
-                              Text(
-                                "Series ID ${widget.seriesMatches![index].seriesAdWrapper!.seriesId}",
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.black),
-                              ),
-                            ],
-                          ),
-                        )),
-                        height: 140,
-                        decoration: BoxDecoration(
-                            color: Colors.brown,
-                            borderRadius: BorderRadius.circular(15)),
-                        width: double.infinity,
+                  return Visibility(
+                    visible: widget.seriesMatches![index].seriesAdWrapper != null,
+                    child: Padding(
+                      padding: const EdgeInsets.all(40.0),
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DetailsOfMatch(widget.seriesMatches![index].seriesAdWrapper),
+                                ));
+                          });
+                        },
+                        child: Container(
+                          child: Center(
+                              child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "${widget.seriesMatches![index].seriesAdWrapper?.seriesName}",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black,fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "Series ID ${widget.seriesMatches![index].seriesAdWrapper?.seriesId}",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black,fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          )),
+                          height: 140,
+                          decoration: BoxDecoration(
+                              color: Colors.brown,
+                              borderRadius: BorderRadius.circular(15)),
+                          width: double.infinity,
+                        ),
                       ),
                     ),
                   );
